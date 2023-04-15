@@ -12,7 +12,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const restaurantsList = require('./restaurant.json') //載入restaurant.json
 
-mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true }) //設定連線到mongoDB
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true }) //設定連線到mongoDB
 
 // 取得資料庫連線狀態
 const db = mongoose.connection
