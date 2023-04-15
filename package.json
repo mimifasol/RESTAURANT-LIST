@@ -11,6 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
-    "express-handlebars": "^3.0.0"
+    "express-handlebars": "^3.0.0",
+    "mongodb": "4.1",
+    "mongoose": "^5.9.7"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3"
   }
 }

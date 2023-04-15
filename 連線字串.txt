@@ -1,0 +1,3 @@
+mongodb+srv://alpha:<password>@cluster0.j7jsiig.mongodb.net/?retryWrites=true&w=majority
+
+mongodb+srv://alpha:camp@cluster0.j7jsiig.mongodb.net/?retryWrites=true&w=majority
