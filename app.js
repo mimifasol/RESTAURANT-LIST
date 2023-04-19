@@ -60,3 +60,4 @@ app.use(express.static('public')) // setting static files 設定靜態檔案之�
 app.listen(port, () => {
   console.log(`Express is listening on localhost:${port}`)
 })
+
