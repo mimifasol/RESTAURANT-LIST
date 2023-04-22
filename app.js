@@ -32,9 +32,9 @@ app.use(bodyParser.urlencoded({ extended: true }))//與範例不同express
 // 瀏覽全部餐廳
 app.get('/', (req, res) => {
   Restaurant.find()//範例多{}
-  .lean()
-  .then(restaurants => res.render('index',{restaurants}))
-  .catch(error => console.log(error))
+    .lean()
+    .then(restaurants => res.render('index', { restaurants }))
+    .catch(error => console.log(error))
   //res.render('index', { restaurants: restaurantsList.results })
 })
 
@@ -49,6 +49,15 @@ app.post('/restaurants', (req, res) => {
   console.log(restaurant)
   return Restaurant.create(restaurant)
     .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+//瀏覽特定頁面
+app.get('/restaurants/:id', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('detail', { restaurant }))
     .catch(error => console.log(error))
 })
 
