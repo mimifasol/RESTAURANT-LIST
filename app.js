@@ -4,13 +4,15 @@ const app = express() //設定app為主入口
 const port = 3000
 const exphbs = require('express-handlebars') // require express-handlebars
 const mongoose = require('mongoose') //載入mongoose
+const bodyParser = require('body-parser')
+const Restaurant = require('./models/Restaurant')//載入Restaurant model
 
 // 加入這段 code, 僅在非正式環境時, 使用 dotenv
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
 
-const restaurantsList = require('./restaurant.json') //載入restaurant.json
+const restaurantsList = require('./restaurant.json') //載入restaurant.json(暫時用，完成後可刪去)
 
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true }) //設定連線到mongoDB
 
@@ -25,10 +27,29 @@ db.once('open', () => {
   console.log('mongodb connected!')
 })
 
+app.use(bodyParser.urlencoded({ extended: true }))//與範例不同express
 
-// routes setting for index頁面
+// 瀏覽全部餐廳
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurantsList.results })
+  Restaurant.find()//範例多{}
+  .lean()
+  .then(restaurants => res.render('index',{restaurants}))
+  .catch(error => console.log(error))
+  //res.render('index', { restaurants: restaurantsList.results })
+})
+
+//新增餐廳頁面
+app.get('/restaurants/new', (req, res) => {
+  res.render('new')
+})
+
+//新增餐廳
+app.post('/restaurants', (req, res) => {
+  const restaurant = req.body
+  console.log(restaurant)
+  return Restaurant.create(restaurant)
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
 })
 
 //定義(使用者在搜尋欄輸入關鍵字)路由，並以toLowerCase()優化搜尋體驗

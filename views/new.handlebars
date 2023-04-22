@@ -1,0 +1,53 @@
+<div class="container mt-5">
+  <div class="col-md-10 col-12 mx-auto">
+    <div class="row row-cols-sm-2">
+      <form action="/restaurants" method="post">
+        <div class="mb-3">
+          <label for="name" class="form-label">餐廳名稱:</label>
+          <input class="form-control" type="text" placeholder="鼎泰豐.." name="name" id="name" required>
+        </div>
+        <div class="mb-3" class="form-floating">
+          <label for="category" class="form-label">餐廳類別:</label>
+          <input class="form-control" type="text" placeholder="中式餐廳.." name="category" list="category-select"
+            id="category" required>
+          <datalist id="category-select">
+            <option value="日本料理">
+            <option value="韓式料理">
+            <option value="中式餐廳">
+            <option value="美式餐廳">
+            <option value="義式餐廳">
+            <option value="酒吧">
+            <option value="咖啡廳">
+            <option value="甜點下午茶">
+          </datalist>
+        </div>
+        <div class="mb-3">
+          <label for="rating" class="form-label">餐廳評價:</label>
+          <input class="form-control" type="text" placeholder="1~5顆星" name="rating" id="rating" required>
+        </div>
+        <div class="mb-3">
+          <label for="location" class="form-label">餐廳地址:</label>
+          <input class="form-control" type="text" placeholder="台北市大安區和平東路.." name="location" id="location">
+        </div>
+        <div class="mb-3">
+          <label for="google_map" class="form-label">Google map:</label>
+          <input class="form-control" type="text" placeholder="google.maps/.." name="google_map" id="google_map">
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">餐廳電話:</label>
+          <input class="form-control" type="text" placeholder="0988.." name="phone" id="phone">
+        </div>
+        <div class="mb-3">
+          <label for="image" class="form-label">餐廳照片:</label>
+          <input class="form-control" type="text" placeholder="https://.../images..." name="image" id="image">
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">餐廳介紹:</label>
+          <textarea class="form-control" type="text" placeholder="復古羊肉餐館，色香味美.." name="description" rows="4"
+            id="description" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+    </div>
+  </div>
+</div>
