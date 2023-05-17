@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const Restaurant = require('../restaurant')
+const restaurant = require('../restaurant')
 const restaurantList = require('../../restaurant.json').results
 
 if (process.env.NODE_ENV !== 'production') {
@@ -19,8 +19,7 @@ db.on('error', () => {
 // 連線成功
 db.once('open', () => {
   console.log('running restaurantSeeder script...') //執行腳本(寫新增餐廳資料腳本)
-
-  Restaurant.create(restaurantList)
+  restaurant.create(restaurantList)
     .then(() => {
       console.log("restaurantSeeder done!")
       db.close()
